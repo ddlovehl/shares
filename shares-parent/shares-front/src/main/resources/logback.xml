@@ -1,0 +1,106 @@
+<configuration>
+	<property name="log.base" value="/home/logs"  />
+	<property name="pattern"
+		value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{sessionId}] %-5level [%thread] %logger{80}-[%line] :%msg%n" />
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--root -->
+    <appender name="root"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.base}/skyeye-admin-root.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.base}/%d{yyyy-MM-dd}/skyeye-admin-root-%i.%d{yyyy-MM-dd}.log.gz
+            </fileNamePattern>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>30MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异常 -->
+<!--     <appender name="exception" -->
+<!--               class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!--         <file>${log.base}/tour-exception.log</file> -->
+<!--         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+<!--             <fileNamePattern>${log.base}/%d{yyyy-MM-dd}/tour-exception-%i.%d{yyyy-MM-dd}.log.gz -->
+<!--             </fileNamePattern> -->
+<!--             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
+<!--                 <MaxFileSize>30MB</MaxFileSize> -->
+<!--             </TimeBasedFileNamingAndTriggeringPolicy> -->
+<!--         </rollingPolicy> -->
+<!--         <encoder> -->
+<!--             <pattern>${pattern}</pattern> -->
+<!--         </encoder> -->
+<!--     </appender> -->
+
+    <!-- 手机 -->
+<!--     <appender name="center" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!--         <file>${log.base}/api-center.log</file> -->
+<!--         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+<!--             <fileNamePattern>${log.base}/%d{yyyy-MM-dd}/api-center-%i.%d{yyyy-MM-dd}.log.gz -->
+<!--             </fileNamePattern> -->
+<!--             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
+<!--                 <MaxFileSize>30MB</MaxFileSize> -->
+<!--             </TimeBasedFileNamingAndTriggeringPolicy> -->
+<!--         </rollingPolicy> -->
+<!--         <encoder> -->
+<!--             <pattern>${pattern}</pattern> -->
+<!--         </encoder> -->
+<!--     </appender> -->
+
+
+ 
+
+<!--     <logger name="om.kcdz.report" additivity="false"> -->
+<!--         <level value="debug"/> -->
+<!--         <appender-ref ref="center"/> -->
+<!--     </logger> -->
+
+	<!-- 日志过滤 -->
+	<logger name="org.springframework">
+		<level value="info" />
+	</logger>
+	<logger name="org.hibernate">
+		<level value="info" />
+	</logger>
+	<logger name="org.mongodb">
+		<level value="info" />
+	</logger>
+	<logger name="org.apache">
+		<level value="info" />
+	</logger>
+	<logger name="com.netflix">
+		<level value="info" />
+	</logger>
+	<logger name="org.mybatis">
+		<level value="debug" />
+	</logger>
+	<logger name="druid.sql">
+		<level value="info" />
+	</logger>
+	
+	
+	<logger name="com.fourkings.shares">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="com.fourkings.shares.dao">
+		<level value="debug" />
+	</logger>
+
+	<!-- root级别控制 -->
+	<root level="DEBUG">
+		<appender-ref ref="stdout" />
+        <appender-ref ref="root" />
+	</root>
+
+</configuration>  

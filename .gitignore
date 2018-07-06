@@ -1,0 +1,8 @@
+/.project
+**/.project
+**/target
+/.settings/
+**/.settings/
+**/.classpath
+**/bin
+**/.tern-project
