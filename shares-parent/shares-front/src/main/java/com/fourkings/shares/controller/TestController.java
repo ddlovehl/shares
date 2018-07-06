@@ -19,7 +19,6 @@ public class TestController {
 	@RequestMapping("/front/test")
 	public String test() {
 		logger.info("test....");
-		logger.info("test....提交测试---zlb");
 		return "/demo/index";
 	}
 	
